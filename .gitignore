@@ -1,0 +1,11 @@
+node_modules/
+dist/
+tests/e2e/logs/
+*.bak
+*.log
+.DS_Store
+
+# Sobras do openapi-generator
+git_push.sh
+.travis.yml
+.gitlab-ci.yml

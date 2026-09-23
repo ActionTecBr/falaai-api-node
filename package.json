@@ -1,0 +1,38 @@
+{
+  "name": "falaai-api",
+  "version": "1.21.47",
+  "description": "Official Node.js/TypeScript SDK for the FalaAI API - AI-powered call transcription, diagnosis and compliance auditing.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "openapi-fetch": "^0.13.5"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^7.4.4",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.8"
+  },
+  "keywords": ["falaai", "api", "sdk", "compliance", "call-audit", "speech-to-text", "transcription"],
+  "author": "Action Tec Br <livio@action.tec.br>",
+  "license": "MIT",
+  "homepage": "https://falaai.action.tec.br/api",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ActionTecBr/falaai-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ActionTecBr/falaai-api/issues"
+  }
+}
