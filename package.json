@@ -11,7 +11,9 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "vitest run"
@@ -24,15 +26,36 @@
     "typescript": "^5.7.0",
     "vitest": "^5.0.1"
   },
-  "keywords": ["falaai", "api", "sdk", "compliance", "call-audit", "speech-to-text", "transcription"],
+  "keywords": [
+    "falaai",
+    "api",
+    "sdk",
+    "call-center",
+    "contact-center",
+    "speech-to-text",
+    "transcription",
+    "conversation-intelligence",
+    "sentiment-analysis",
+    "compliance",
+    "audit",
+    "copc",
+    "iso-18295",
+    "lgpd",
+    "omnichannel",
+    "helpdesk",
+    "chatbot",
+    "whatsapp",
+    "crm",
+    "crm-integration"
+  ],
   "author": "Action Tec Br <livio@action.tec.br>",
   "license": "MIT",
   "homepage": "https://falaai.action.tec.br/api",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ActionTecBr/falaai-api.git"
+    "url": "git+https://github.com/ActionTecBr/falaai-api-node.git"
   },
   "bugs": {
-    "url": "https://github.com/ActionTecBr/falaai-api/issues"
+    "url": "https://github.com/ActionTecBr/falaai-api-node/issues"
   }
 }

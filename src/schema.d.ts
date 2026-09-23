@@ -31,7 +31,7 @@ export interface paths {
          *     import httpx
          *
          *     response = httpx.post(
-         *         'https://api.fala.ai/v1/audio/transcriptions',
+         *         'https://api01-falaai.action.tec.br/v1/audio/transcriptions',
          *         headers={'Authorization': 'Bearer fai_xxx'},
          *         files={'file': open('call.mp3', 'rb')},
          *         data={'model': 'falaai-transcribe-1', 'language': 'pt'}
@@ -41,7 +41,7 @@ export interface paths {
          *
          *     **cURL:**
          *     ```bash
-         *     curl https://api.fala.ai/v1/audio/transcriptions \
+         *     curl https://api01-falaai.action.tec.br/v1/audio/transcriptions \
          *       -H 'Authorization: Bearer fai_xxx' \
          *       -F 'file=@call.mp3' \
          *       -F 'model=falaai-transcribe-1' \
@@ -73,7 +73,7 @@ export interface paths {
          *     import httpx
          *
          *     response = httpx.post(
-         *         'https://api.fala.ai/v1/analyze/diagnostic',
+         *         'https://api01-falaai.action.tec.br/v1/analyze/diagnostic',
          *         headers={'Authorization': 'Bearer fai_xxx'},
          *         json={
          *             'dialog': 'Speaker 1: [00:00:00.540 - 00:00:01.139] Hi, Alex.',
@@ -86,7 +86,7 @@ export interface paths {
          *
          *     **cURL:**
          *     ```bash
-         *     curl https://api.fala.ai/v1/analyze/diagnostic \
+         *     curl https://api01-falaai.action.tec.br/v1/analyze/diagnostic \
          *       -H 'Authorization: Bearer fai_xxx' \
          *       -H 'Content-Type: application/json' \
          *       -d '{
@@ -121,7 +121,7 @@ export interface paths {
          *     import httpx
          *
          *     response = httpx.post(
-         *         'https://api.fala.ai/v1/analyze/auditoriaRisco',
+         *         'https://api01-falaai.action.tec.br/v1/analyze/auditoriaRisco',
          *         headers={'Authorization': 'Bearer fai_xxx'},
          *         json={
          *             'dialog': 'Speaker 1: [00:00:00.540 - 00:00:01.139] Hi, Alex.',
@@ -135,7 +135,7 @@ export interface paths {
          *
          *     **cURL:**
          *     ```bash
-         *     curl https://api.fala.ai/v1/analyze/auditoriaRisco \
+         *     curl https://api01-falaai.action.tec.br/v1/analyze/auditoriaRisco \
          *       -H 'Authorization: Bearer fai_xxx' \
          *       -H 'Content-Type: application/json' \
          *       -d '{
@@ -888,6 +888,21 @@ export interface components {
              * @description Role (agent/client/bot/unknown)
              */
             role?: string | null;
+            /**
+             * Confidence
+             * @description Role inference confidence (high/medium/low)
+             */
+            confidence?: string | null;
+            /**
+             * Source
+             * @description Role source (input/inferred)
+             */
+            source?: string | null;
+            /**
+             * Evidence
+             * @description Role inference evidence
+             */
+            evidence?: string | null;
         };
         /** AuditoriaRiscoParticipantsV2 */
         AuditoriaRiscoParticipantsV2: {
