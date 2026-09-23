@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "openapi-typescript": "^7.4.4",
-    "typescript": "^5.7.0",
+    "typescript": "^7.0.2",
     "vitest": "^5.0.1"
   },
   "keywords": ["falaai", "api", "sdk", "compliance", "call-audit", "speech-to-text", "transcription"],
