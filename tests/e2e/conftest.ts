@@ -20,6 +20,6 @@ function loadEnv(path: string): Record<string, string> {
 const env = loadEnv(resolve(__dir, "..", "..", "..", ".env.e2e"));
 
 export const BASE = process.env.FALAAI_E2E_BASE || env.FALAAI_LOCAL_URL || "http://localhost:8002";
-export const PROD = env.FALAAI_PROD_URL || "https://api01-falaai.action.tec.br";
-export const KEY = env.FALAAI_TEST_KEY || "";
-export const AUDIO = env.FALAAI_E2E_AUDIO || "";
+export const PROD = process.env.FALAAI_PROD_URL || env.FALAAI_PROD_URL || "https://api01-falaai.action.tec.br";
+export const KEY = process.env.FALAAI_TEST_KEY || env.FALAAI_TEST_KEY || "";
+export const AUDIO = process.env.FALAAI_E2E_AUDIO || env.FALAAI_E2E_AUDIO || "";
