@@ -16,7 +16,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepack": "node -e \"const fs=require('fs');const b=fs.readdirSync('.').filter(f=>f.endsWith('.bak'));if(b.length){console.warn('[prepack] removendo do pacote: '+b.join(', '));b.forEach(f=>fs.unlinkSync(f))}\""
   },
   "dependencies": {
     "openapi-fetch": "^0.17.0"
