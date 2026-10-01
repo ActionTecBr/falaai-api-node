@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
+import { Configuration, type ConfigurationParameters } from "../../src/index";
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 
@@ -23,3 +24,8 @@ export const BASE = process.env.FALAAI_E2E_BASE || env.FALAAI_LOCAL_URL || "http
 export const PROD = process.env.FALAAI_PROD_URL || env.FALAAI_PROD_URL || "https://api01-falaai.action.tec.br";
 export const KEY = process.env.FALAAI_TEST_KEY || env.FALAAI_TEST_KEY || "";
 export const AUDIO = process.env.FALAAI_E2E_AUDIO || env.FALAAI_E2E_AUDIO || "";
+
+export function makeConfig(basePath: string, apiKey: string): Configuration {
+  const params: ConfigurationParameters = { basePath, accessToken: apiKey };
+  return new Configuration(params);
+}

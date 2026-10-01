@@ -15,15 +15,12 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && node fix-esm-extensions.mjs",
     "test": "vitest run",
     "prepack": "node -e \"const fs=require('fs');const b=fs.readdirSync('.').filter(f=>f.endsWith('.bak'));if(b.length){console.warn('[prepack] removendo do pacote: '+b.join(', '));b.forEach(f=>fs.unlinkSync(f))}\""
   },
-  "dependencies": {
-    "openapi-fetch": "^0.17.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "openapi-typescript": "^7.4.4",
     "typescript": "^5.7.0",
     "vitest": "^5.0.1"
   },

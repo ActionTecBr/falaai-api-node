@@ -1,18 +1,18 @@
 import { describe, it, expect } from "vitest";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
-import { createFalaAIClient } from "../../src/index";
+import { HealthApi, AnalysisApi, SpeechApi, UsageApi, VersionApi, WebhooksApi, EmailAlertsApi } from "../../src/index";
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const API_ROOT = resolve(__dir, "..", "..", "..", "..");
 const SPEC = resolve(API_ROOT, "openapi.json");
-const SCHEMA = resolve(__dir, "..", "..", "src", "schema.d.ts");
+const APIS_DIR = resolve(__dir, "..", "..", "src", "apis");
 
 const EXPECTED_OPS = [
   ["POST", "/v1/audio/transcriptions"],
   ["POST", "/v1/analyze/diagnostic"],
-  ["POST", "/v1/analyze/auditoriaRisco"],
+  ["POST", "/v1/analyze/riskAudit"],
   ["GET", "/v1/usage/log"],
   ["GET", "/v1/usage/by-key"],
   ["GET", "/v1/webhooks"],
@@ -41,23 +41,19 @@ describe("contrato / cobertura", () => {
   });
 
   it("SDK cobre 100% das operacoes", () => {
-    const schema = readFileSync(SCHEMA, "utf-8");
+    const files = readdirSync(APIS_DIR).filter((f) => f.endsWith(".ts") && f !== "index.ts");
+    const text = files.map((f) => readFileSync(resolve(APIS_DIR, f), "utf-8")).join("\n");
     for (const [, path] of EXPECTED_OPS) {
-      expect(schema.includes(`"${path}"`), path).toBe(true);
+      expect(text.includes(`\`${path}\``), path).toBe(true);
     }
-    const client: any = createFalaAIClient({ apiKey: "x", baseUrl: "http://localhost" });
-    for (const m of ["GET", "POST", "PUT", "DELETE", "HEAD"]) {
-      expect(typeof client[m]).toBe("function");
+    for (const Api of [HealthApi, AnalysisApi, SpeechApi, UsageApi, VersionApi, WebhooksApi, EmailAlertsApi]) {
+      expect(typeof Api).toBe("function");
     }
   });
 
   it("exemplos de uso existem (sincronia fonte unica)", () => {
-    const ex = resolve(API_ROOT, "app", "static", "examples");
-    for (const f of [
-      "curl/transcribe.sh", "python/transcribe.py", "nodejs/transcribe.js",
-      "curl/auditoria_risco.sh", "python/auditoria_risco.py", "nodejs/auditoria_risco.js",
-      "curl/diagnostic.sh", "python/diagnostic.py", "nodejs/diagnostic.js",
-    ]) {
+    const ex = resolve(API_ROOT, "sdks", "node", "examples");
+    for (const f of ["transcribe.ts", "diagnose.ts", "audit.ts", "health.ts"]) {
       expect(existsSync(resolve(ex, f)), f).toBe(true);
     }
   });
