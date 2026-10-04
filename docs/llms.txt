@@ -1,6 +1,6 @@
-# FalaAI API - Node.js SDK
+# FalaAI API - Node.js / TypeScript SDK
 
-> Official Node.js SDK for the FalaAI API - AI-powered call transcription (speech-to-text), conversation diagnostics, and compliance/risk auditing.
+> Official Node.js / TypeScript SDK for the FalaAI API - AI-powered call transcription (speech-to-text), conversation diagnostics, and compliance/risk auditing.
 
 ## Links
 - Documentation: https://actiontecbr.github.io/falaai-api-node/
@@ -13,4 +13,6 @@
 - POST /v1/audio/transcriptions - transcribe a call (audio to text)
 - POST /v1/analyze/diagnostic - conversation diagnosis
 - POST /v1/analyze/riskAudit - compliance / risk audit
+- POST /v1/whatsapp/extractConversations - extract and segment WhatsApp conversations from an export
 - GET /v1/health - health check
+- GET /api/version - API version

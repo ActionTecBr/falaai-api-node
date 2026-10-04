@@ -54,3 +54,8 @@ export * from './VersionResponse';
 export * from './WebhookEvent';
 export * from './WebhookItem';
 export * from './WebhookListResponse';
+export * from './WhatsappConversation';
+export * from './WhatsappConversationsResponse';
+export * from './WhatsappMeta';
+export * from './WhatsappSpeaker';
+export * from './WhatsappUsage';

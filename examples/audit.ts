@@ -1,4 +1,4 @@
-import { Configuration, AnalysisApi } from "falaai-api";
+import { Configuration, AnalysisApi, RiskAuditRequestResponseFormatEnum } from "falaai-api";
 
 const config = new Configuration({
   basePath: process.env.FALAAI_BASE_URL ?? "https://api01-falaai.action.tec.br",
@@ -47,7 +47,7 @@ const audit = await analysisApi.createRiskAuditV1AnalyzeRiskAuditPost({
         "role": "client"
       }
     ],
-    responseFormat: "v2",
+    responseFormat: RiskAuditRequestResponseFormatEnum.V2,
     clientReferenceId: "call-202609271311",
   },
 });

@@ -7,3 +7,4 @@ export * from './SpeechApi';
 export * from './UsageApi';
 export * from './VersionApi';
 export * from './WebhooksApi';
+export * from './WhatsappApi';

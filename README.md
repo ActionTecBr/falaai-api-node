@@ -30,23 +30,6 @@ CRM conversation                     ->  FalaAI Risk Audit
 
 > Integrate FalaAI at **any point** of your pipeline — not only at capture/transcription.
 
-## Use the APIs the way you want
-
-Every FalaAI API is **independent and optional** — chain any subset, in any combination.
-
-```mermaid
-flowchart LR
-  A["Audio"] -.->|optional| T["Transcribe"]
-  T --> X["Text / dialog"]
-  S["Your own STT / CRM / chat / existing transcript"] --> X
-  X -.->|optional| D["Diagnostic"]
-  X -.->|optional| R["Risk Audit"]
-  D --> O["Structured intelligence + auditable report"]
-  R --> O
-```
-
-> Skip **Transcribe** if you already have text. Call only **Diagnostic**, only **Risk Audit**, or both — whatever your case needs.
-
 ## Install
 
 ```bash
@@ -144,10 +127,37 @@ FalaAI API is an **AI conversation-intelligence API** for analyzing customer-ser
 
 ## Use cases
 
-- **Contact center / Quality** — audit 100% of conversations instead of a sample.
-- **Compliance / Legal** — auditable evidence for audits and disputes.
-- **CX / Operations** — risk score, sentiment and reason per conversation.
-- **BI / Data** — typed JSON ready for your database or analytics stack.
+- **Contact center / Quality** - audit 100% of conversations instead of a sample.
+- **Compliance / Legal** - auditable evidence for audits and disputes.
+- **CX / Operations** - risk score, sentiment and reason per conversation.
+- **BI / Data** - typed JSON ready for your database or analytics stack.
+
+## Why FalaAI
+
+- **Audit 100%, not a sample** - every conversation gets a score, not a random QA sample.
+- **Auditable by design** - a compliance risk score with detections/violations and an HTML report you can hand to an auditor.
+- **Credits, not tokens** - you know exactly what each call costs (per second of audio, per character of text, per conversation). Monthly plans + non-expiring top-up packs.
+- **Zero-storage** - audio/text/results are processed and discarded; only usage/audit records remain. TLS in transit + at rest, per-account isolation (multitenancy), LGPD (you are the controller; Action Tec is the processor).
+- **3 native languages** (PT/EN/ES) · **start free** (no card).
+- **B2B ready** - one Enterprise plan serves N clients, no per-user fee (ideal for ISVs).
+
+## Integrations
+
+FalaAI is **language-independent** - integrate at **any point** of your pipeline (capture, transcription, analysis or audit). Common ecosystems:
+
+| Ecosystem | How |
+|---|---|
+| **PABX / telephony (3CX, Asterisk, Genesys)** | Send the recording to Transcribe, or the transcript to Diagnostic/Risk Audit. |
+| **CRM / ERP (Odoo, Salesforce, SAP Service Cloud, HubSpot)** | Attach the structured JSON (summary, reason, sentiment, risk score) to the record. |
+| **Contact center / QA (Zendesk, Twilio Flex, Take Blip)** | Batch-audit conversations and feed the score into your QA dashboard. |
+| **Chatbots / messaging (WhatsApp, Telegram, Microsoft Teams)** | Extract conversations from an export and analyze them. |
+| **BI / Data** | Typed JSON ready for your warehouse or analytics stack. |
+
+> These are **integration examples**, not certified native integrations. Any platform can integrate through **REST / cURL** - the standard, language-independent path. Native ingestion connectors are on the roadmap.
+
+## BYOT - Bring Your Own Transcription
+
+Already have speech-to-text (Whisper, Deepgram, AssemblyAI, your own)? **Skip Transcription** and send the text straight to **Diagnostic** and/or **Risk Audit**. You only pay for what you use.
 
 ## SDK surface (Node.js / TypeScript)
 
@@ -157,14 +167,15 @@ FalaAI API is an **AI conversation-intelligence API** for analyzing customer-ser
 | `HealthApi` | `falaai-api` | `healthCheck()`, `healthCheckHeadRaw()` |
 | `SpeechApi` | `falaai-api` | `createTranscriptionV1AudioTranscriptionsPost(...)` |
 | `AnalysisApi` | `falaai-api` | `createDiagnosticV1AnalyzeDiagnosticPost(...)`, `createRiskAuditV1AnalyzeRiskAuditPost(...)` |
+| `WhatsappApi` | `falaai-api` | `extractConversationsV1WhatsappExtractConversationsPost(...)` |
 | `UsageApi` / `WebhooksApi` / `EmailAlertsApi` / `VersionApi` | `falaai-api` | management |
-| Models | `falaai-api` | `DiagnosticRequest`, `DiagnosticResponse`, `RiskAuditRequest`, `RiskAuditV2Response`, `Participant`, `DiagnosticAudioEvent` |
+| Models | `falaai-api` | `DiagnosticRequest`, `DiagnosticResponse`, `RiskAuditRequest`, `RiskAuditV2Response`, `Participant`, `DiagnosticAudioEvent`, `WhatsappConversationsResponse` |
 
 > Model IDs: `falaai-transcribe-1`, `falaai-diagnostic-1`, `falaai-risk-audit-1`.
 
 ## Examples
 
-Runnable examples in [`examples/`](./examples): `health.ts`, `transcribe.ts`, `diagnose.ts`, `audit.ts`.
+Runnable examples in [`examples/`](./examples): `health.ts`, `transcribe.ts`, `diagnose.ts`, `audit.ts`, `whatsapp.ts`.
 
 ## Authentication
 
@@ -190,22 +201,6 @@ try {
 }
 ```
 
-## Where to integrate (this SDK)
-
-FalaAI is language-independent; this package targets **Node.js / TypeScript** backends.
-
-| Platform / environment (this SDK's language: **Node.js / TypeScript**) | Integration |
-|---|---|
-| **HubSpot** | `falaai-api` (Node) |
-| **Zendesk** | `falaai-api` (Node) |
-| **Pipedrive** | `falaai-api` (Node) |
-| **WhatsApp Business** | `falaai-api` (Node) |
-| **Telegram** bots | `falaai-api` (Node) |
-| **Express / NestJS / Next.js API routes** | `falaai-api` |
-| Other stacks (3CX, Salesforce, Genesys...) | REST / cURL — [API reference](https://api01-falaai.action.tec.br/docs) (or the SDK for that backend's language) |
-
-> These are **integration examples**, not certified native integrations. Any platform can integrate through **REST / cURL** — see the [API reference](https://api01-falaai.action.tec.br/docs). Authenticated calls use `Authorization: Bearer fai_<key>`.
-
 ## Production usage
 
 - Store API keys in environment variables or a secret manager — never hard-code.
@@ -218,7 +213,7 @@ FalaAI is language-independent; this package targets **Node.js / TypeScript** ba
 | Requirement | Version |
 |---|---|
 | Node.js | ES Modules (CI on Node 22) |
-| API | v1.21.49 |
+| API | v1.21.51 |
 
 ## Documentation
 
@@ -231,7 +226,7 @@ FalaAI is language-independent; this package targets **Node.js / TypeScript** ba
 
 ## Versioning
 
-Semantic versioning; the SDK version tracks the API version (`1.21.49`). See [CHANGELOG.md](CHANGELOG.md) and [Releases](https://github.com/ActionTecBr/falaai-api-node/releases).
+Semantic versioning; the SDK version tracks the API version (`1.21.51`). See [CHANGELOG.md](CHANGELOG.md) and [Releases](https://github.com/ActionTecBr/falaai-api-node/releases).
 
 ## Security
 

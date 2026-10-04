@@ -63,6 +63,12 @@ docs/WebhookEvent.md
 docs/WebhookItem.md
 docs/WebhookListResponse.md
 docs/WebhooksApi.md
+docs/WhatsappApi.md
+docs/WhatsappConversation.md
+docs/WhatsappConversationsResponse.md
+docs/WhatsappMeta.md
+docs/WhatsappSpeaker.md
+docs/WhatsappUsage.md
 package.json
 src/apis/AnalysisApi.ts
 src/apis/EmailAlertsApi.ts
@@ -71,6 +77,7 @@ src/apis/SpeechApi.ts
 src/apis/UsageApi.ts
 src/apis/VersionApi.ts
 src/apis/WebhooksApi.ts
+src/apis/WhatsappApi.ts
 src/apis/index.ts
 src/index.ts
 src/models/AudioEvent.ts
@@ -127,6 +134,11 @@ src/models/VersionResponse.ts
 src/models/WebhookEvent.ts
 src/models/WebhookItem.ts
 src/models/WebhookListResponse.ts
+src/models/WhatsappConversation.ts
+src/models/WhatsappConversationsResponse.ts
+src/models/WhatsappMeta.ts
+src/models/WhatsappSpeaker.ts
+src/models/WhatsappUsage.ts
 src/models/index.ts
 src/runtime.ts
 tsconfig.esm.json
