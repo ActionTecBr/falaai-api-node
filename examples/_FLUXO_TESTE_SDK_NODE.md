@@ -1,5 +1,5 @@
 # FLUXO DE TESTES DA SDK NODE (`falaai-api`)
-@version 1.3.0 | 30/09/2026 | MANUAL — nao e regenerado pelo exportador de exemplos
+@version 1.4.0 | 12/10/2026 | MANUAL — nao e regenerado pelo exportador de exemplos
 SDK: `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\` (pacote npm `falaai-api`) · Docker da linguagem: imagem oficial `node:22`
 Regra de fundo: `.opencode/rules/macro/modulos/falaai-api/sdk-fonte-unica.md` (tests/e2e = MANUAL)
 
@@ -20,14 +20,14 @@ Regra de fundo: `.opencode/rules/macro/modulos/falaai-api/sdk-fonte-unica.md` (t
 | 10 | `src/` (gerado) | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\src\` | client GERADO (openapi-generator): `apis/` + `models/` + `runtime.ts` + `index.ts` |
 | 11 | `demo_callcenter.mp3` | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\tests\e2e\demo_callcenter.mp3` | audio do teste (1.3 MB) |
 | 12 | `logs\node_<endpoint>_<ts>_tst.json` (+ `.html`) | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\tests\e2e\logs\` | LOGS gerados pelo runner (**limpa os antigos a cada rodada**) |
-| 13 | `VERSION.txt` | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\VERSION.txt` | versao da API que o health devolve (`api_v1.21.49`) — SEM BOM |
+| 13 | `VERSION.txt` | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\VERSION.txt` | versao da API que o health devolve (`api_v1.21.54`) — SEM BOM |
 | 14 | `_FLUXO_TESTE_SDK_NODE.md` (este doc) | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\examples\_FLUXO_TESTE_SDK_NODE.md` | este doc |
 
 ## Requisitos do dev (inviolaveis)
 - R-A: roda em Docker DA LINGUAGEM (`node:22`)
 - R-B: roda os 4 exemplos GERADOS (`health/transcribe/diagnose/audit.ts`) — nunca reescreve
 - R-C: LOG = request (codigo do exemplo) + response (o que o SDK devolveu) + `.html` da auditoria
-- R-D: chave `fai_668e6474b83dd24540860d9ab9df0b738f7171a0f5bd8179` hardcoded no runner (local-only)
+- R-D: **sem chave hardcoded** no runner — a chave vem do parâmetro `-ApiKey` (o §1.10 do `COMANDOS_PUBLICACAO.md` injeta). **NUNCA** gravar chave `fai_` em arquivo.
 - R-E: **PASSO 0 antes de tudo** — exemplos sincronizados com a FONTE UNICA + **SDK rebuildado** (ultima versao)
 
 ## Fluxo (com os nomes reais dos scripts)

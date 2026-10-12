@@ -15,13 +15,14 @@ Name | Type
 `end` | string
 `gapMinutes` | number
 `minMessages` | number
-`charsPerMinute` | number
 `turns` | number
 `systemLines` | number
 `conversationsTotal` | number
 `conversationsInWindow` | number
 `monologuesDropped` | number
 `conversationsSelected` | number
+`voiceNote` | boolean
+`expression` | boolean
 
 ## Example
 
@@ -39,13 +40,14 @@ const example = {
   "end": null,
   "gapMinutes": null,
   "minMessages": null,
-  "charsPerMinute": null,
   "turns": null,
   "systemLines": null,
   "conversationsTotal": null,
   "conversationsInWindow": null,
   "monologuesDropped": null,
   "conversationsSelected": null,
+  "voiceNote": null,
+  "expression": null,
 } satisfies WhatsappMeta
 
 console.log(example)

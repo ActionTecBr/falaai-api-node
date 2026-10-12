@@ -7,7 +7,6 @@
 Name | Type
 ------------ | -------------
 `model` | string
-`text` | string
 `dialog` | string
 `audioEvents` | [Array&lt;DiagnosticAudioEvent&gt;](DiagnosticAudioEvent.md)
 `durationSeconds` | number
@@ -26,7 +25,6 @@ import type { RiskAuditRequest } from 'falaai-api'
 // TODO: Update the object below with actual values
 const example = {
   "model": null,
-  "text": null,
   "dialog": null,
   "audioEvents": null,
   "durationSeconds": null,

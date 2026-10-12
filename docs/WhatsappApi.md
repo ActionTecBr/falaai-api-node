@@ -10,7 +10,7 @@ All URIs are relative to *https://api01-falaai.action.tec.br*
 
 ## extractConversationsV1WhatsappExtractConversationsPost
 
-> WhatsappConversationsResponse extractConversationsV1WhatsappExtractConversationsPost(file, start, end, timezone, dateFormat, gapMinutes, minMessages, charsPerMinute, clientReferenceId)
+> WhatsappConversationsResponse extractConversationsV1WhatsappExtractConversationsPost(file, start, end, timezone, dateFormat, gapMinutes, minMessages, voiceNote, expression, clientReferenceId)
 
 Extract and segment WhatsApp conversations from an export
 
@@ -46,8 +46,10 @@ async function example() {
     gapMinutes: 8.14,
     // number (optional)
     minMessages: 56,
-    // number (optional)
-    charsPerMinute: 8.14,
+    // boolean | Transcrever mensagens de voz/video gravadas na hora? (optional)
+    voiceNote: true,
+    // boolean | Descrever expressoes visuais (figurinha/GIF/imagem)? (optional)
+    expression: true,
     // string (optional)
     clientReferenceId: clientReferenceId_example,
   } satisfies ExtractConversationsV1WhatsappExtractConversationsPostRequest;
@@ -76,7 +78,8 @@ example().catch(console.error);
 | **dateFormat** | `string` |  | [Defaults to `undefined`] |
 | **gapMinutes** | `number` |  | [Optional] [Defaults to `720`] |
 | **minMessages** | `number` |  | [Optional] [Defaults to `2`] |
-| **charsPerMinute** | `number` |  | [Optional] [Defaults to `800`] |
+| **voiceNote** | `boolean` | Transcrever mensagens de voz/video gravadas na hora? | [Optional] [Defaults to `true`] |
+| **expression** | `boolean` | Descrever expressoes visuais (figurinha/GIF/imagem)? | [Optional] [Defaults to `true`] |
 | **clientReferenceId** | `string` |  | [Optional] [Defaults to `undefined`] |
 
 ### Return type

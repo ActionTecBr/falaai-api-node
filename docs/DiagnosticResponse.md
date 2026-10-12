@@ -12,6 +12,7 @@ Name | Type
 `analysis` | [DiagnosticAnalysisMap](DiagnosticAnalysisMap.md)
 `usage` | [DiagnosticUsage](DiagnosticUsage.md)
 `clientReferenceId` | string
+`htmlReport` | string
 
 ## Example
 
@@ -26,6 +27,7 @@ const example = {
   "analysis": null,
   "usage": null,
   "clientReferenceId": null,
+  "htmlReport": null,
 } satisfies DiagnosticResponse
 
 console.log(example)

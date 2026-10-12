@@ -1,6 +1,6 @@
 # sdks/node/examples - exemplos node (canonicos)
 
-@version 1.4.0 | criado: 30/09/2026 10:47 | atualizado: 04/10/2026 02:35
+@version 1.4.0 | criado: 30/09/2026 10:47 | atualizado: 12/10/2026 17:00
 
 ## O que e
 Os 4 exemplos node (ts) dos endpoints da API, EXPORTADOS DA LANDING PAGE (fonte unica
@@ -31,18 +31,18 @@ _generate_node_examples.mjs (prefixo _ = ferramenta, nao exemplo)
 ## Relatorio da ultima execucao
 | Data | Modo | Resultado |
 |------|------|-----------|
-| 04/10/2026 02:35 | verificacao (--check) | OK - 5 exemplos node 100% conforme a landing. |
+| 12/10/2026 17:00 | verificacao (--check) | OK - 5 exemplos node 100% conforme a landing. |
 
 | Arquivo | Endpoint | Status | Gerado em |
 |---------|----------|--------|-----------|
-| health.ts | GET  /v1/health | ok | 04/10/2026 02:21 |
-| transcribe.ts | POST /v1/audio/transcriptions | ok | 04/10/2026 02:21 |
-| diagnose.ts | POST /v1/analyze/diagnostic | ok | 04/10/2026 02:21 |
-| audit.ts | POST /v1/analyze/riskAudit | ok | 04/10/2026 02:21 |
-| whatsapp.ts | whatsapp.ts | ok | 04/10/2026 02:21 |
+| health.ts | GET  /v1/health | ok | 12/10/2026 15:10 |
+| transcribe.ts | POST /v1/audio/transcriptions | ok | 12/10/2026 15:10 |
+| diagnose.ts | POST /v1/analyze/diagnostic | ok | 12/10/2026 15:10 |
+| audit.ts | POST /v1/analyze/riskAudit | ok | 12/10/2026 15:10 |
+| whatsapp.ts | whatsapp.ts | ok | 12/10/2026 15:10 |
 
 ## Datas
 - Criacao:     30/09/2026 10:47
-- Atualizacao: 04/10/2026 02:35
+- Atualizacao: 12/10/2026 17:00
 
 Gerado automaticamente por _generate_node_examples.mjs - NAO edite a mao.

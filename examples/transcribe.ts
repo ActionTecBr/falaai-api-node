@@ -9,7 +9,7 @@ const speechApi = new SpeechApi(config);
 
 const model = "falaai-transcribe-1";
 const language = "pt";
-const clientReferenceId = "call_202609271408";
+const clientReferenceId = "20260927140800000-aud";
 
 const file = new Blob([readFileSync("demo_callcenter.mp3")], { type: "audio/mpeg" });
 

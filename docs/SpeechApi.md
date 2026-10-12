@@ -38,7 +38,7 @@ async function example() {
     model: model_example,
     // string (optional)
     language: language_example,
-    // string | Optional client-supplied ID echoed verbatim in the response. Use to correlate/sync with your system. Accepted charset: [A-Za-z0-9._:-]. Not idempotency. (optional)
+    // string | Optional client-supplied ID echoed verbatim in the response. Use to correlate/sync with your system. Accepted charset: [A-Za-z0-9 _/:.-], max 60 chars. Not idempotency. (optional)
     clientReferenceId: clientReferenceId_example,
   } satisfies CreateTranscriptionV1AudioTranscriptionsPostRequest;
 
@@ -61,8 +61,8 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **file** | `Blob` |  | [Defaults to `undefined`] |
 | **model** | `string` |  | [Optional] [Defaults to `&#39;falaai-transcribe-1&#39;`] |
-| **language** | `string` |  | [Optional] [Defaults to `&#39;pt&#39;`] |
-| **clientReferenceId** | `string` | Optional client-supplied ID echoed verbatim in the response. Use to correlate/sync with your system. Accepted charset: [A-Za-z0-9._:-]. Not idempotency. | [Optional] [Defaults to `undefined`] |
+| **language** | `string` |  | [Optional] [Defaults to `undefined`] |
+| **clientReferenceId** | `string` | Optional client-supplied ID echoed verbatim in the response. Use to correlate/sync with your system. Accepted charset: [A-Za-z0-9 _/:.-], max 60 chars. Not idempotency. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 

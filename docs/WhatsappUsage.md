@@ -8,6 +8,11 @@ Name | Type
 ------------ | -------------
 `conversations` | number
 `characters` | number
+`expressions` | number
+`voiceNotes` | number
+`conversationCredits` | number
+`expressionCredits` | number
+`audioCredits` | number
 `creditsConsumed` | number
 `processingMs` | number
 
@@ -20,6 +25,11 @@ import type { WhatsappUsage } from 'falaai-api'
 const example = {
   "conversations": null,
   "characters": null,
+  "expressions": null,
+  "voiceNotes": null,
+  "conversationCredits": null,
+  "expressionCredits": null,
+  "audioCredits": null,
   "creditsConsumed": null,
   "processingMs": null,
 } satisfies WhatsappUsage
