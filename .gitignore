@@ -12,3 +12,7 @@ examples/_generate_*.mjs
 git_push.sh
 .travis.yml
 .gitlab-ci.yml
+
+# Lixeira (deletar/) e lockfile do npm (o projeto usa pnpm) - NUNCA versionar (v1.27.0)
+deletar/
+package-lock.json

@@ -8,7 +8,6 @@ Name | Type
 ------------ | -------------
 `riskOrigin` | string
 `hasZeroToleranceViolation` | boolean
-`deterministicValidatorChanges` | Array&lt;any&gt;
 
 ## Example
 
@@ -19,7 +18,6 @@ import type { RiskAuditAuditDecisionsV2 } from 'falaai-api'
 const example = {
   "riskOrigin": null,
   "hasZeroToleranceViolation": null,
-  "deterministicValidatorChanges": null,
 } satisfies RiskAuditAuditDecisionsV2
 
 console.log(example)

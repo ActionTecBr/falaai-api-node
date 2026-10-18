@@ -1,9 +1,9 @@
 # sdks/node/examples - exemplos node (canonicos)
 
-@version 1.4.0 | criado: 30/09/2026 10:47 | atualizado: 12/10/2026 17:09
+@version 1.4.0 | criado: 15/10/2026 18:52 | atualizado: 18/10/2026 00:29
 
 ## O que e
-Os 4 exemplos node (ts) dos endpoints da API, EXPORTADOS DA LANDING PAGE (fonte unica
+Os 7 exemplos node (.ts) - 4 endpoints + 3 variantes do WhatsApp - EXPORTADOS DA LANDING PAGE (fonte unica
 de verdade). Nunca editados a mao.
 
 ## Fonte unica de verdade
@@ -31,18 +31,20 @@ _generate_node_examples.mjs (prefixo _ = ferramenta, nao exemplo)
 ## Relatorio da ultima execucao
 | Data | Modo | Resultado |
 |------|------|-----------|
-| 12/10/2026 17:09 | verificacao (--check) | OK - 5 exemplos node 100% conforme a landing. |
+| 18/10/2026 00:29 | exportacao | OK - 7 exemplos node exportados da landing. |
 
 | Arquivo | Endpoint | Status | Gerado em |
 |---------|----------|--------|-----------|
-| health.ts | GET  /v1/health | ok | 12/10/2026 15:10 |
-| transcribe.ts | POST /v1/audio/transcriptions | ok | 12/10/2026 15:10 |
-| diagnose.ts | POST /v1/analyze/diagnostic | ok | 12/10/2026 15:10 |
-| audit.ts | POST /v1/analyze/riskAudit | ok | 12/10/2026 15:10 |
-| whatsapp.ts | whatsapp.ts | ok | 12/10/2026 15:10 |
+| health.ts | GET  /v1/health | exportado (361 chars) | 18/10/2026 00:29 |
+| transcribe.ts | POST /v1/audio/transcriptions | exportado (860 chars) | 18/10/2026 00:29 |
+| diagnose.ts | POST /v1/analyze/diagnostic | exportado (4406 chars) | 18/10/2026 00:29 |
+| audit.ts | POST /v1/analyze/riskAudit | exportado (3286 chars) | 18/10/2026 00:29 |
+| whatsapp_preview.ts | POST /v1/whatsapp/extractConversations | exportado (1012 chars) | 18/10/2026 00:29 |
+| whatsapp_periodo.ts | POST /v1/whatsapp/extractConversations | exportado (1027 chars) | 18/10/2026 00:29 |
+| whatsapp_janelas.ts | POST /v1/whatsapp/extractConversations | exportado (1114 chars) | 18/10/2026 00:29 |
 
 ## Datas
-- Criacao:     30/09/2026 10:47
-- Atualizacao: 12/10/2026 17:09
+- Criacao:     15/10/2026 18:52
+- Atualizacao: 18/10/2026 00:29
 
 Gerado automaticamente por _generate_node_examples.mjs - NAO edite a mao.

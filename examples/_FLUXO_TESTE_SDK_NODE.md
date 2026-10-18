@@ -1,5 +1,5 @@
 # FLUXO DE TESTES DA SDK NODE (`falaai-api`)
-@version 1.4.0 | 12/10/2026 | MANUAL — nao e regenerado pelo exportador de exemplos
+@version 1.5.0 | 2026-10-15 | v1.5.0 (15/10): 3 variantes do WhatsApp (7 exemplos) + HTML de TODO endpoint com html_report + PASSO FINAL (sync sandbox-responses);  MANUAL — nao e regenerado pelo exportador de exemplos
 SDK: `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\` (pacote npm `falaai-api`) · Docker da linguagem: imagem oficial `node:22`
 Regra de fundo: `.opencode/rules/macro/modulos/falaai-api/sdk-fonte-unica.md` (tests/e2e = MANUAL)
 
@@ -9,11 +9,11 @@ Regra de fundo: `.opencode/rules/macro/modulos/falaai-api/sdk-fonte-unica.md` (t
 | # | Script / Arquivo | Path completo | Papel no fluxo |
 |---|---|---|---|
 | 1 | `run_docker.ps1` v1.2.0 | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\tests\e2e\run_docker.ps1` | WRAPPER (PowerShell): valida mp3 → **PASSO 0a** (sync exemplos) → **PASSO 0b** (`pnpm build` = SDK ultima versao) → sobe o Docker `node:22` |
-| 2 | `run_examples.sh` v1.2.0 | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\tests\e2e\run_examples.sh` | RUNNER (bash, roda DENTRO do container): **limpa logs antigos**, prepara o console tmp, executa os 4 exemplos, grava os logs JSON + `.html` |
-| 3 | `_generate_node_examples.mjs` v1.4.0 | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\examples\_generate_node_examples.mjs` | EXPORTADOR (**PASSO 0a**, roda no host): re-exporta os 4 exemplos da FONTE UNICA + **gera o README** (versao/data) |
+| 2 | `run_examples.sh` v1.2.0 | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\tests\e2e\run_examples.sh` | RUNNER (bash, roda DENTRO do container): **limpa logs antigos**, prepara o console tmp, executa os 7 exemplos, grava os logs JSON + `.html` |
+| 3 | `_generate_node_examples.mjs` v1.4.0 | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\examples\_generate_node_examples.mjs` | EXPORTADOR (**PASSO 0a**, roda no host): re-exporta os 7 exemplos da FONTE UNICA + **gera o README** (versao/data) |
 | 4 | `_generate_curl_examples.mjs` | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\curl\examples\_generate_curl_examples.mjs` | GATE interno (chamado pelo exportador node): valida cURL vs fonte unica — exit 1 se divergir |
 | 5 | `sandbox-examples.ts` | `D:\ProjetoFalaAI\FalaAI\FalaAI_landing\lib\sandbox-examples.ts` | FONTE UNICA dos exemplos (8 linguagens x 4 endpoints, tokens `{{...}}`) |
-| 6 | `health.ts` · `transcribe.ts` · `diagnose.ts` · `audit.ts` | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\examples\*.ts` | OS 4 EXEMPLOS GERADOS (exatamente o que o runner executa — nunca reescrito a mao) |
+| 6 | `health.ts` · `transcribe.ts` · `diagnose.ts` · `audit.ts` | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\examples\*.ts` | os 7 exemplos GERADOS (exatamente o que o runner executa — nunca reescrito a mao) |
 | 7 | `README.md` | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\examples\README.md` | manual dos exemplos (**GERADO** pelo exportador v1.4.0 — versao/data) |
 | 8 | `dist/` + `package.json` | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\dist\` | O SDK compilado (**rebuildado no PASSO 0b**) — copiado para o tmp como `node_modules/falaai-api` |
 | 9 | `fix-esm-extensions.mjs` | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\node\fix-esm-extensions.mjs` | POS-BUILD: adiciona `.js` nos imports relativos do `dist/` (ESM do Node exige extensao) |
@@ -25,8 +25,8 @@ Regra de fundo: `.opencode/rules/macro/modulos/falaai-api/sdk-fonte-unica.md` (t
 
 ## Requisitos do dev (inviolaveis)
 - R-A: roda em Docker DA LINGUAGEM (`node:22`)
-- R-B: roda os 4 exemplos GERADOS (`health/transcribe/diagnose/audit.ts`) — nunca reescreve
-- R-C: LOG = request (codigo do exemplo) + response (o que o SDK devolveu) + `.html` da auditoria
+- R-B: roda os 7 exemplos GERADOS (`health/transcribe/diagnose/audit.ts`) — nunca reescreve
+- R-C: LOG = request (codigo do exemplo) + response (o que o SDK devolveu) + `.html` de todo endpoint com html_report
 - R-D: **sem chave hardcoded** no runner — a chave vem do parâmetro `-ApiKey` (o §1.10 do `COMANDOS_PUBLICACAO.md` injeta). **NUNCA** gravar chave `fai_` em arquivo.
 - R-E: **PASSO 0 antes de tudo** — exemplos sincronizados com a FONTE UNICA + **SDK rebuildado** (ultima versao)
 
@@ -47,7 +47,7 @@ flowchart TD
     J --> K{"stdout = JSON valido?"}
     K -- "sim" --> L["log: logs/node_<endpoint>_<ts>_tst.json<br/>(secoes separadas por linha em branco)"]
     K -- "nao" --> M["log {response: null, error: stdout}"]
-    L --> N{"endpoint = auditoria?"}
+    L --> N{"tem html_report?"}
     M --> N
     N -- "sim" --> O["unzip htmlReport (base64+gzip)<br/>grava node_auditoria_<ts>_tst.html"]
     N -- "nao" --> F

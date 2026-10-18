@@ -7,6 +7,8 @@ const config = new Configuration({
 });
 const whatsappApi = new WhatsappApi(config);
 
+// EXTRACAO real (debita creditos) - janela UNICA: start/end OBRIGATORIAS fora do dry_run.
+// Datas no formato do date_format (ex. day_first -> 05/03/2024 00:00).
 // REQUIRED: file (.zip/.txt export), start, end, timezone, date_format + Authorization
 // OPTIONAL: gap_minutes (default 720) | min_messages (default 2) | client_reference_id
 const whatsapp = await whatsappApi.extractConversationsV1WhatsappExtractConversationsPost({

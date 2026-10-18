@@ -23,6 +23,7 @@ Name | Type
 `conversationsSelected` | number
 `voiceNote` | boolean
 `expression` | boolean
+`windows` | number
 
 ## Example
 
@@ -48,6 +49,7 @@ const example = {
   "conversationsSelected": null,
   "voiceNote": null,
   "expression": null,
+  "windows": null,
 } satisfies WhatsappMeta
 
 console.log(example)

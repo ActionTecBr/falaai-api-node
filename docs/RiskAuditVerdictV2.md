@@ -8,11 +8,8 @@ Name | Type
 ------------ | -------------
 `label` | string
 `levelCode` | string
-`color` | string
-`icon` | string
 `riskMatrix` | { [key: string]: any; }
 `appliedActions` | [Array&lt;RiskAuditAppliedActionV2&gt;](RiskAuditAppliedActionV2.md)
-`decisionDetails` | any
 
 ## Example
 
@@ -23,11 +20,8 @@ import type { RiskAuditVerdictV2 } from 'falaai-api'
 const example = {
   "label": null,
   "levelCode": null,
-  "color": null,
-  "icon": null,
   "riskMatrix": null,
   "appliedActions": null,
-  "decisionDetails": null,
 } satisfies RiskAuditVerdictV2
 
 console.log(example)

@@ -52,6 +52,8 @@ FALAAI_API_KEY=fai_xxxxxxxx
 
 ### 3. Transcribe a call (audio -> text)
 
+> No audio file? See **[audio help](https://falaai.action.tec.br/api/audio-help)** for accepted formats and limits.
+
 ```typescript
 import { readFileSync } from "node:fs";
 import { Configuration, SpeechApi } from "falaai-api";
@@ -102,15 +104,16 @@ const analysis = new AnalysisApi(new Configuration({
 }));
 
 const transcript = "Good morning, how can I help? I need to cancel my subscription.";
+const dialog = "Speaker 1: [00:00:00.100 - 00:00:03.100] Good morning, how can I help?\nSpeaker 2: [00:00:03.100 - 00:00:06.200] I need to cancel my subscription.";
 
 // 5 analyses in one call: summary, reason, action, topic, sentiment
 const diagnostic = await analysis.createDiagnosticV1AnalyzeDiagnosticPost({
   diagnosticRequest: { text: transcript, language: "pt-BR", durationSeconds: 81.46 },
 });
 
-// Compliance risk score + violations + auditable report
+// Compliance risk score + violations + auditable report (Risk Audit requires a diarized 'dialog', not 'text')
 const audit = await analysis.createRiskAuditV1AnalyzeRiskAuditPost({
-  riskAuditRequest: { text: transcript, language: "pt-BR", responseLanguage: "pt-BR", durationSeconds: 81.46 },
+  riskAuditRequest: { dialog: dialog, language: "pt-BR", responseLanguage: "pt-BR", durationSeconds: 81.46 },
 });
 ```
 
@@ -156,6 +159,8 @@ FalaAI is **language-independent** - integrate at **any point** of your pipeline
 
 > These are **integration examples**, not certified native integrations. Any platform can integrate through **REST / cURL** - the standard, language-independent path. Native ingestion connectors are on the roadmap.
 
+**This SDK's language (Node.js / TypeScript):** FalaAI is language-independent; this package targets **Node.js / TypeScript** backends (your target platform does not need to be built in Node.js).
+
 ## BYOT - Bring Your Own Transcription
 
 Already have speech-to-text (Whisper, Deepgram, AssemblyAI, your own)? **Skip Transcription** and send the text straight to **Diagnostic** and/or **Risk Audit**. You only pay for what you use.
@@ -176,7 +181,7 @@ Already have speech-to-text (Whisper, Deepgram, AssemblyAI, your own)? **Skip Tr
 
 ## Examples
 
-Runnable examples in [`examples/`](./examples): `health.ts`, `transcribe.ts`, `diagnose.ts`, `audit.ts`, `whatsapp.ts`.
+Runnable examples in [`examples/`](https://github.com/ActionTecBr/falaai-api-node/tree/main/examples): `health.ts`, `transcribe.ts`, `diagnose.ts`, `audit.ts`, `whatsapp.ts`.
 
 ## Authentication
 
@@ -214,7 +219,7 @@ try {
 | Requirement | Version |
 |---|---|
 | Node.js | ES Modules (CI on Node 22) |
-| API | v1.21.54 |
+| API | v1.21.67 |
 
 ## Documentation
 
@@ -227,7 +232,7 @@ try {
 
 ## Versioning
 
-Semantic versioning; the SDK version tracks the API version (`1.21.54`). See [CHANGELOG.md](CHANGELOG.md) and [Releases](https://github.com/ActionTecBr/falaai-api-node/releases).
+Semantic versioning; the SDK version tracks the API version (`1.21.67`). See [CHANGELOG.md](CHANGELOG.md) and [Releases](https://github.com/ActionTecBr/falaai-api-node/releases).
 
 ## Security
 

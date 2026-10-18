@@ -27,6 +27,7 @@ docs/LocationInner.md
 docs/MessageResponse.md
 docs/Participant.md
 docs/ParticipantDiagnostic.md
+docs/ResponseExtractConversationsV1WhatsappExtractconversationsPost.md
 docs/RiskAuditAnalysisV2.md
 docs/RiskAuditAppliedActionV2.md
 docs/RiskAuditAudioEventModelV2.md
@@ -67,6 +68,13 @@ docs/WhatsappApi.md
 docs/WhatsappConversation.md
 docs/WhatsappConversationsResponse.md
 docs/WhatsappMeta.md
+docs/WhatsappPreviewItem.md
+docs/WhatsappPreviewItemBreakdown.md
+docs/WhatsappPreviewItemCredits.md
+docs/WhatsappPreviewItemMedia.md
+docs/WhatsappPreviewParams.md
+docs/WhatsappPreviewResponse.md
+docs/WhatsappPreviewWindow.md
 docs/WhatsappSpeaker.md
 docs/WhatsappUsage.md
 package.json
@@ -102,6 +110,7 @@ src/models/LocationInner.ts
 src/models/MessageResponse.ts
 src/models/Participant.ts
 src/models/ParticipantDiagnostic.ts
+src/models/ResponseExtractConversationsV1WhatsappExtractconversationsPost.ts
 src/models/RiskAuditAnalysisV2.ts
 src/models/RiskAuditAppliedActionV2.ts
 src/models/RiskAuditAudioEventModelV2.ts
@@ -137,6 +146,13 @@ src/models/WebhookListResponse.ts
 src/models/WhatsappConversation.ts
 src/models/WhatsappConversationsResponse.ts
 src/models/WhatsappMeta.ts
+src/models/WhatsappPreviewItem.ts
+src/models/WhatsappPreviewItemBreakdown.ts
+src/models/WhatsappPreviewItemCredits.ts
+src/models/WhatsappPreviewItemMedia.ts
+src/models/WhatsappPreviewParams.ts
+src/models/WhatsappPreviewResponse.ts
+src/models/WhatsappPreviewWindow.ts
 src/models/WhatsappSpeaker.ts
 src/models/WhatsappUsage.ts
 src/models/index.ts

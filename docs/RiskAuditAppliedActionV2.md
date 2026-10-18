@@ -10,8 +10,6 @@ Name | Type
 `label` | string
 `description` | string
 `priority` | string
-`color` | string
-`icon` | string
 `condition` | string
 `reason` | string
 
@@ -26,8 +24,6 @@ const example = {
   "label": null,
   "description": null,
   "priority": null,
-  "color": null,
-  "icon": null,
   "condition": null,
   "reason": null,
 } satisfies RiskAuditAppliedActionV2

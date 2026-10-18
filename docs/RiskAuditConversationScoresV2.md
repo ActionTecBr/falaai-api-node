@@ -14,7 +14,6 @@ Name | Type
 `positiveNegativeRatio` | any
 `globalRiskSeverity` | string
 `globalRiskSeverityLabel` | string
-`globalRiskSeverityColor` | string
 `riskLikelihoodAvg` | number
 `riskImpactAvg` | number
 
@@ -33,7 +32,6 @@ const example = {
   "positiveNegativeRatio": null,
   "globalRiskSeverity": null,
   "globalRiskSeverityLabel": null,
-  "globalRiskSeverityColor": null,
   "riskLikelihoodAvg": null,
   "riskImpactAvg": null,
 } satisfies RiskAuditConversationScoresV2

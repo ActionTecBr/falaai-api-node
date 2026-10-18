@@ -13,8 +13,6 @@ Name | Type
 `blocked` | number
 `audioEventsUsed` | number
 `audioEventsAggravated` | number
-`macAudioApplied` | any
-`mvadApplied` | any
 `totalParticipants` | number
 `totalAgents` | number
 `totalClients` | number
@@ -37,8 +35,6 @@ const example = {
   "blocked": null,
   "audioEventsUsed": null,
   "audioEventsAggravated": null,
-  "macAudioApplied": null,
-  "mvadApplied": null,
   "totalParticipants": null,
   "totalAgents": null,
   "totalClients": null,

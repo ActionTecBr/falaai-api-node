@@ -9,6 +9,9 @@ Name | Type
 `conversations` | number
 `characters` | number
 `expressions` | number
+`expressionsFigurinha` | number
+`expressionsGif` | number
+`expressionsEmoji` | number
 `voiceNotes` | number
 `conversationCredits` | number
 `expressionCredits` | number
@@ -26,6 +29,9 @@ const example = {
   "conversations": null,
   "characters": null,
   "expressions": null,
+  "expressionsFigurinha": null,
+  "expressionsGif": null,
+  "expressionsEmoji": null,
   "voiceNotes": null,
   "conversationCredits": null,
   "expressionCredits": null,
